@@ -11,7 +11,5 @@
     background-color: #193047;
     display: flex;
     justify-content: space-evenly;
-    position: absolute;
-    bottom: 0%;
   }
 </style>

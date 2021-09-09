@@ -1,9 +1,11 @@
 <template>
-  <Header />
-  <div class="app-wrapper">    
-    <router-view></router-view>    
-  </div> 
-  <Footer />
+  <div class="app-wrapper">
+    <Header />
+    <div class="router-view-wrapper">    
+      <router-view></router-view>    
+    </div> 
+    <Footer />
+  </div>  
 </template>
 
 <script>
@@ -28,5 +30,9 @@ html {
 
 body {
   margin: 0;
+}
+
+.app-wrapper {
+  height: 100%;
 }
 </style>
