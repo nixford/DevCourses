@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import CoursesList from '../views/courses/CoursesList.vue';
-import Details from '../views/courses/Details.vue';
-import Registration from '../views/courses/Registration.vue';
-import ContactCourse from '../views/requests/ContactCourse.vue';
-import RequestsCourse from '../views/requests/RequestsCourse.vue';
-import notFound from '../views/NotFound.vue';
+import CoursesList from './views/courses/CoursesList.vue';
+import Details from './views/courses/Details.vue';
+import Registration from './views/courses/Registration.vue';
+import ContactCourse from './views/requests/ContactCourse.vue';
+import RequestsCourse from './views/requests/RequestsCourse.vue';
+import notFound from './views/NotFound.vue';
 
 
 const router = createRouter({
