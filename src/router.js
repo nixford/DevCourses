@@ -22,6 +22,7 @@ const router = createRouter({
     {
       path: '/courses/:id',
       component: Details,
+      props: true,
       children: [
         {
           path: 'contact',
