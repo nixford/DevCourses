@@ -4,7 +4,7 @@ import CoursesList from '../views/courses/CoursesList.vue';
 import Details from '../views/courses/Details.vue';
 import Registration from '../views/courses/Registration.vue';
 import ContactCourse from '../views/requests/ContactCourse.vue';
-import Requests from '../views/requests/Requests.Vue';
+import RequestsCourse from '../views/requests/RequestsCourse.vue';
 import notFound from '../views/NotFound.vue';
 
 
@@ -35,7 +35,7 @@ const router = createRouter({
     },
     {
       path: '/requests',
-      component: Requests,
+      component: RequestsCourse,
     },
     {
       path: '/:notFound(.*)',
