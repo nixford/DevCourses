@@ -1,6 +1,6 @@
 <template>
   <h1>{{ course.courseName }}</h1>
-    <p>Lecturer: {{ course.lecturer }} / Lectures: {{ course.lectures }}</p>
+    <p>Lecturer: {{ course.lecturerName }} / Lectures: {{ course.lectursCount }}</p>
     <div class="areas-list">
        <div class="area"
           v-for="(area, i) in course.areas"

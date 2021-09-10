@@ -2,7 +2,7 @@
   <div class="details">
     <section class="course-info">
       <h1>{{ selectedCourse.courseName }}</h1>
-      <p>Lecturer: {{ selectedCourse.lecturer }} / Lectures: {{ selectedCourse.lectures }}</p>
+      <p>Lecturer: {{ selectedCourse.lecturerName }} / Lectures: {{ selectedCourse.lectursCount }}</p>
       <div class="areas-list">
        <div class="area"
           v-for="(area, i) in selectedCourse.areas"
@@ -13,12 +13,17 @@
     </div>   
     <p>{{ selectedCourse.description }}</p>
     </section>
-    <router-view></router-view>
-    <div class="buttons">
-      <router-link :to="`/courses/${selectedCourse.id}/contact`">
+    <router-view
+      :course="selectedCourse"
+    >
+    </router-view>
+    <div class="buttons">      
+      <router-link v-if="$route.name === 'courseContact'" :to="`/courses/${selectedCourse.id}`">
+        <button>Hide Contacts</button>
+      </router-link>  
+      <router-link v-else :to="`/courses/${selectedCourse.id}/contact`">
         <button>View Contacts</button>
-      </router-link>
-      <button>Sign up</button>
+      </router-link>        
     </div>    
   </div>
 </template>
@@ -29,6 +34,7 @@ export default {
   data() {
     return {
       selectedCourse: null,
+      isOpen: false,
     }
   },
   methods: {

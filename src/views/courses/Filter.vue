@@ -1,33 +1,35 @@
 <template>
   <div class="filter-wrapper">
     <p>Find course</p>
-    <span class="filter-options">
-      <label for="frontend">Frontend</label>
-      <input 
-        type="checkbox" 
-        id="frontend" 
-        checked
-        @change="setFilters"
-      >
-    </span>
-    <span class="filter-options">
-      <label for="backend">Backend</label>
-      <input 
-        type="checkbox" 
-        id="backend" 
-        checked
-        @change="setFilters"
-      >
-    </span>
-    <span class="filter-options">
-      <label for="cloud">Cloud</label>
-      <input 
-        type="checkbox" 
-        id="cloud" 
-        checked
-        @change="setFilters"
-      >
-    </span>
+    <div class="options-div">
+      <span class="filter-options">
+        <label for="frontend">Frontend</label>
+        <input 
+          type="checkbox" 
+          id="frontend" 
+          checked
+          @change="setFilters"
+        >
+      </span>
+      <span class="filter-options">
+        <label for="backend">Backend</label>
+        <input 
+          type="checkbox" 
+          id="backend" 
+          checked
+          @change="setFilters"
+        >
+      </span>
+      <span class="filter-options">
+        <label for="cloud">Cloud</label>
+        <input 
+          type="checkbox" 
+          id="cloud" 
+          checked
+          @change="setFilters"
+        >
+      </span>
+    </div>    
   </div>  
 </template>
 
@@ -59,25 +61,30 @@ export default {
 </script>
 
 <style scoped>
+  .filter-wrapper {
+    width: 30%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:aliceblue;
+    border-radius: 64px;
+    margin-top: 1%;
+  }
+
+  .options-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+
   p {
     margin: 0.5rem 0;
   }
 
-  .filter-option {
-    margin-right: 1rem;
-  }
-
-  .filter-option label,
-  .filter-option input {
-    vertical-align: middle;
-  }
-
-  .filter-option label {
-    margin-left: 0.25rem;
-  }
-
-  .filter-option.active label {
-    font-weight: bold;
+  .filter-options {
+    margin-right: 12px;
   }
 
 </style>
