@@ -1,5 +1,6 @@
 <template>
   <div class="details">
+    <h1>{{ courseCreatorId }}</h1>
     <section class="course-info">
       <h1>{{ selectedCourse.courseName }}</h1>
       <p>Lecturer: {{ selectedCourse.lecturerName }} / Lectures: {{ selectedCourse.lectursCount }}</p>
@@ -18,10 +19,10 @@
     >
     </router-view>
     <div class="buttons">      
-      <router-link v-if="$route.name === 'courseContact'" :to="`/courses/${selectedCourse.id}`">
+      <router-link v-if="$route.name === 'courseContact'" :to="`/courses/${selectedCourse.courseCreatorId}`">
         <button>Hide Contacts</button>
       </router-link>  
-      <router-link v-else :to="`/courses/${selectedCourse.id}/contact`">
+      <router-link v-else :to="`/courses/${selectedCourse.courseCreatorId}/contact`">
         <button>View Contacts</button>
       </router-link>        
     </div>    
@@ -30,7 +31,6 @@
 
 <script>
 export default {
-  props: ['id'],
   data() {
     return {
       selectedCourse: null,
@@ -39,7 +39,8 @@ export default {
   },
   methods: {
     getCourse() {
-      this.selectedCourse = this.$store.getters['courses/courses'].find(c => c.id === this.id);
+      console.log(this.$route.params)
+      this.selectedCourse = this.$store.getters['courses/courses'].find(c => c.courseCreatorId === this.$route.params.id);
     }
   },
   created() {

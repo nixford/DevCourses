@@ -79,6 +79,7 @@ export default {
           email: this.email,
           message: this.message,
           courseName: this.course.courseName,
+          courseCreatorId: this.course.courseCreatorId,
         }
 
         this.$store.dispatch('requests/registerRequest', formData) // namespace/actionName

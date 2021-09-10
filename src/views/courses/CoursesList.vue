@@ -12,7 +12,7 @@
       </div>      
       <div 
         v-for="course in filteredCourses" 
-        :key="course.id"
+        :key="course.courseCreatorId"
         class="course" 
       >
         <Course :course="course" />
@@ -39,6 +39,7 @@ export default {
       const courses = this.$store.getters['courses/courses'];
 
       return courses.filter(c => {
+        console.log(c)
         if (this.activeFilters.frontend && c.areas.includes('frontend')) {
           return true;
         }
@@ -67,7 +68,13 @@ export default {
   methods: {
     setFilters(updatedFilters) {
       this.activeFilters = updatedFilters;
+    },
+    loadCoatches() {
+      this.$store.dispatch('courses/loadCourses')
     }
+  },
+  created() {
+    this.loadCoatches();
   }
 };
 </script>

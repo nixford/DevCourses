@@ -3,7 +3,7 @@
   <div class="request-list-wrapper">    
     <div class="request"
       v-for="request in getRequests"
-      :key="request.id"
+      :key="request.requestId"
     >
       <p>Full name: {{ request.firstName }} {{ request.lastName }}</p>
       <p>Email: {{ request.email }}</p>

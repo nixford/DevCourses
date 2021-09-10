@@ -2,7 +2,7 @@ export default {
   registerRequest(context, data) {
     const requestData = {
       requestId: context.rootGetters.requestId,
-      creatorId: data.creatorId,
+      courseCreatorId: data.courseCreatorId,
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,

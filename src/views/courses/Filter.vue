@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     setFilters(event) {
-      const inputId = event.target.id;
+      const inputId = event.target.courseCreatorId;
       const isActive = event.target.checked;
       const updatedFilters = {
         ...this.filters,

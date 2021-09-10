@@ -10,13 +10,13 @@ const store = createStore({
   },
   state() { // separate state which provides id
     return {
-      id: new Date().toISOString(),
-      requestId: new Date().toISOString(),
+      courseCreatorId: 'c3',
+      requestId: 'requestId1',
     }
   },
   getters: {
-    id(state) {
-      return state.id;
+    courseCreatorId(state) {
+      return state.courseCreatorId;
     },
     requestId(state) {
       return state.requestId;

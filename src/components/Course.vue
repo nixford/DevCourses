@@ -1,5 +1,4 @@
 <template>
-  <h1>{{ course.courseName }}</h1>
     <p>Lecturer: {{ course.lecturerName }} / Lectures: {{ course.lectursCount }}</p>
     <div class="areas-list">
        <div class="area"
@@ -11,7 +10,7 @@
     </div>   
     <p>{{ course.description }}</p>
     <div class="buttons">
-      <router-link :to="`/courses/${course.id}`">
+      <router-link :to="`/courses/${course.courseCreatorId}`">
         <button>View Details</button>
       </router-link>
     </div>
