@@ -26,13 +26,32 @@ export default {
 
 html {
   font-family: Arial, Helvetica, sans-serif;
+  position: relative;
 }
 
 body {
   margin: 0;
 }
 
+html, 
+body,
+#app,
 .app-wrapper {
   height: 100%;
 }
+
+.app-wrapper {
+  position: relative;
+  
+}
+
+.router-view-wrapper {
+  padding-bottom: 150px;
+}
+
+.footer-wrapper{
+  position: fixed;
+  bottom: 0%;
+}
+
 </style>

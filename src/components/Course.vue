@@ -11,9 +11,6 @@
     </div>   
     <p>{{ course.description }}</p>
     <div class="buttons">
-      <router-link :to="`/courses/${course.id}/contact`">
-        <button>Contact</button>
-      </router-link>
       <router-link :to="`/courses/${course.id}`">
         <button>View Details</button>
       </router-link>
@@ -46,7 +43,7 @@ export default {
 
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin: auto;
   width: 40%;
   margin-top: 20px;

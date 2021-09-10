@@ -14,9 +14,12 @@
     <p>{{ selectedCourse.description }}</p>
     </section>
     <router-view></router-view>
-    <router-link :to="`/courses/${selectedCourse.id}/contact`">
-      <button>Contact</button>
-    </router-link>
+    <div class="buttons">
+      <router-link :to="`/courses/${selectedCourse.id}/contact`">
+        <button>View Contacts</button>
+      </router-link>
+      <button>Sign up</button>
+    </div>    
   </div>
 </template>
 
@@ -41,6 +44,7 @@ export default {
 
 <style scoped>
 .details {
+  margin-top: 3%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -51,6 +55,12 @@ export default {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+
+.buttons {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 a {

@@ -7,9 +7,8 @@
 <style scoped>
   .footer-wrapper {
     width: 100%;
-    height: 150px;
+    height: 100px;
     background-color: #193047;
-    display: flex;
-    justify-content: space-evenly;
+    margin-top: auto;
   }
 </style>
