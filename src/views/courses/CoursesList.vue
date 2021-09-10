@@ -1,13 +1,20 @@
 <template>
   <div class="courses">
-    <div class="courses-list-wrapper" v-if="hasCourses">
+    <Filter 
+      @change-filters="setFilters"
+    />
+    <div class="courses-list-wrapper" v-if="filteredCourses">
       <div class="top-part">
         <p>LIST OF COURSES</p>
         <router-link to="/register">
           <button>Register new course</button>
         </router-link>
       </div>      
-      <div class="course" v-for="course in filteredCourses" :key="course.id">
+      <div 
+        v-for="course in filteredCourses" 
+        :key="course.id"
+        class="course" 
+      >
         <Course :course="course" />
       </div>
     </div>
@@ -19,18 +26,49 @@
 
 <script>
 import Course from '../../components/Course.vue';
+import Filter from './Filter.vue';
 export default {
   components: {
-    Course
+    Course,
+    Filter
   },
   computed: {
     filteredCourses() {
       // first 'courses'is the key in modules in store/index.js
       // second is the function in store/modules/courses/getters.js
-      return this.$store.getters['courses/courses'];
+      const courses = this.$store.getters['courses/courses'];
+
+      return courses.filter(c => {
+        console.log(c)
+        if (this.activeFilters.frontend && c.areas.includes('frontend')) {
+          return true;
+        }
+        if (this.activeFilters.backend && c.areas.includes('backend')) {
+          return true;
+        }
+        if (this.activeFilters.cloud && c.areas.includes('cloud')) {
+          return true;
+        }
+        return false;
+      })
     },
     hasCourses() {
       return this.$store.getters['courses/hasCourses'];
+    }
+  },
+  data() {
+    return {
+      activeFilters: {
+        frontend: true,
+        backend: true,
+        cloud: true,
+      }
+    }
+  },
+  methods: {
+    setFilters(updatedFilters) {
+      console.log(updatedFilters)
+      this.activeFilters = updatedFilters;
     }
   }
 };

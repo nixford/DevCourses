@@ -20,7 +20,7 @@ export default {
           courseName: 'C#',
           lecturer: 'Lector2',
           lectures: 25,
-          areas: ['frontend', 'backend'],
+          areas: ['frontend'],
           description: 'Description1',
         },
         {
@@ -28,7 +28,23 @@ export default {
           courseName: 'Java',
           lectures: 25,
           lecturer: 'Lector3',
-          areas: ['frontend', 'cloud'],
+          areas: ['backend'],
+          description: 'Description1',
+        },
+        {
+          id: 'courseId4',
+          courseName: 'Python',
+          lectures: 25,
+          lecturer: 'Lector4',
+          areas: ['backend'],
+          description: 'Description1',
+        },
+        {
+          id: 'courseId5',
+          courseName: 'AWS',
+          lectures: 25,
+          lecturer: 'Lector5',
+          areas: ['cloud'],
           description: 'Description1',
         }
       ]
