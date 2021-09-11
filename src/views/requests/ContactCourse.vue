@@ -3,35 +3,19 @@
     <form @submit.prevent="submitForm">
       <div class="form-input">
         <label for="firstName">First name</label>
-        <input 
-          type="text" 
-          id="firstName"
-          v-model="firstName"
-        />
+        <input type="text" id="firstName" v-model="firstName" />
       </div>
       <div class="form-input">
         <label for="lastName">Last name</label>
-        <input 
-          type="text" 
-          id="lastName"
-          v-model="lastName"
-        />
+        <input type="text" id="lastName" v-model="lastName" />
       </div>
       <div class="form-input areas">
         <label for="email">Email</label>
-        <input 
-          type="text" 
-          id="email"
-          v-model="email"
-        />
+        <input type="text" id="email" v-model="email" />
       </div>
       <div class="form-input">
         <label for="message">Message</label>
-        <textarea 
-          id="message" 
-          rows="5"
-          v-model="message"
-        />
+        <textarea id="message" rows="5" v-model="message" />
       </div>
       <button>Sign up</button>
     </form>
@@ -48,8 +32,8 @@ export default {
       lastName: '',
       email: '',
       message: '',
-      errorMessage:'',
-    }
+      errorMessage: ''
+    };
   },
   methods: {
     isValid() {
@@ -73,84 +57,83 @@ export default {
     },
     submitForm() {
       if (this.isValid()) {
-          const formData = {
+        const formData = {
           firstName: this.firstName,
           lastName: this.lastName,
           email: this.email,
           message: this.message,
           courseName: this.course.courseName,
-          courseCreatorId: this.course.courseCreatorId,
-        }
+          courseCreatorId: this.course.courseCreatorId
+        };
 
-        this.$store.dispatch('requests/registerRequest', formData) // namespace/actionName
-        this.$router.replace('/requests')
-      }      
+        this.$store.dispatch('requests/registerRequest', formData); // namespace/actionName
+        this.$router.replace('/requests');
+      }
     }
   }
-}
+};
 </script>
 
 <style scoped>
-  .form-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-  form{
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+form {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  .form-input {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin-bottom: 15px;
-  }
+.form-input {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 15px;
+}
 
-  p,
-  label {
-    text-align: center;
-    font-weight: 700;
-  }
+p,
+label {
+  text-align: center;
+  font-weight: 700;
+}
 
-  input {
-    height: 30px;
-  }
+input {
+  height: 30px;
+}
 
-  .form-input-areas {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-bottom: 3%;
-  }
-  
-  .form-input-areas div {
-    margin-right: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.form-input-areas {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 3%;
+}
 
-  .form-input-areas div {
-    height: 20px;
-  }  
+.form-input-areas div {
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .form-input-areas div label {
-    font-weight: 300;
-  }
+.form-input-areas div {
+  height: 20px;
+}
 
-  button {
-    align-self: center;
-  }
+.form-input-areas div label {
+  font-weight: 300;
+}
 
-  .error-message {
-    color: red;
-  }
+button {
+  align-self: center;
+  background-color: seagreen;
+}
 
+.error-message {
+  color: red;
+}
 </style>
-

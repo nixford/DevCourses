@@ -1,6 +1,5 @@
 <template>
   <div class="details">
-    <h1>{{ courseCreatorId }}</h1>
     <section class="course-info">
       <h1>{{ selectedCourse.courseName }}</h1>
       <p>Lecturer: {{ selectedCourse.lecturerName }} / Lectures: {{ selectedCourse.lectursCount }}</p>
@@ -12,7 +11,7 @@
           {{ area }}
         </div>
     </div>   
-    <p>{{ selectedCourse.description }}</p>
+    <p class="description">{{ selectedCourse.description }}</p>
     </section>
     <router-view
       :course="selectedCourse"
@@ -39,8 +38,7 @@ export default {
   },
   methods: {
     getCourse() {
-      console.log(this.$route.params)
-      this.selectedCourse = this.$store.getters['courses/courses'].find(c => c.courseCreatorId === this.$route.params.id);
+      this.selectedCourse = this.$store.getters['courses/courses'].find(c => c.courseCreatorId === this.$route.params.id) || {};
     }
   },
   created() {
@@ -76,4 +74,15 @@ a {
   text-decoration: none;
   margin-bottom: 10%;
 }
+
+.description {
+  width: 50%;
+  margin: auto;
+  word-break: break-all;
+  font-weight: 400;
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 </style>

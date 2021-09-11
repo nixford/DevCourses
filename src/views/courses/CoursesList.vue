@@ -48,7 +48,6 @@ export default {
       const courses = this.$store.getters['courses/courses'];
 
       return courses.filter(c => {
-        console.log(c)
         if (this.activeFilters.frontend && c.areas.includes('frontend')) {
           return true;
         }

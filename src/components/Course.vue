@@ -1,4 +1,5 @@
 <template>
+  <p>{{ course.courseName }}</p>
   <p>
     Lecturer: {{ course.lecturerName }} / Lectures: {{ course.lectursCount }}
   </p>

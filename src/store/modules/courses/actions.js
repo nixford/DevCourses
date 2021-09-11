@@ -16,10 +16,11 @@ export default {
       body: JSON.stringify(courseData)
     })
 
-    // const responseData = response.json();
+    const responseData = response.json();
 
     if (!response.ok) {
-      // error hendling
+      const error = new Error(responseData.message || 'Failed to fetch!');
+      throw error;
     }
 
     // The commitment will execute only after fetching the data
