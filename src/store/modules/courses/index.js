@@ -4,6 +4,7 @@ import getters from './getters.js';
 
 export default {
   namespaced: true,
+  // lastFetch: null, // Untill implementing caching data, Vuex completely replaced Firebase
   state() {
     return {
       courses: []

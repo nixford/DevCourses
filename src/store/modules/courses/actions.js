@@ -30,6 +30,12 @@ export default {
     })
   },
   async loadCourses(context) {
+
+    // Untill implementing caching data, Vuex completely replaced Firebase
+    // if (!context.getters.shouldUpdate) {
+    //   return;
+    // }
+
     const url = `https://devcourses-53739-default-rtdb.europe-west1.firebasedatabase.app/courses.json`;
     const response = await fetch(url);
 
@@ -55,5 +61,6 @@ export default {
     }
 
     context.commit('setCourses', courses)
+    context.commit('setFetchTimestamp')
   }
 }

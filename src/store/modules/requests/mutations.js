@@ -4,5 +4,5 @@ export default {
   },
   setRequests(state, data) {
     state.requests = data;
-  }
+  },  
 }
