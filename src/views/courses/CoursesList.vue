@@ -3,24 +3,33 @@
     <Filter 
       @change-filters="setFilters"
     />
-    <div class="courses-list-wrapper" v-if="filteredCourses">
+    <div class="courses-list-wrapper">
       <div class="top-part">
         <p>LIST OF COURSES</p>
         <router-link to="/register">
           <button>Register new course</button>
         </router-link>
-      </div>      
-      <div 
-        v-for="course in filteredCourses" 
-        :key="course.courseCreatorId"
-        class="course" 
-      >
-        <Course :course="course" />
+      </div>  
+      <div v-if="isLoading">
+        <p class="message">Loading...</p>
       </div>
+      <div v-if="filteredCourses.length > 0 && !isLoading && !error">
+        <div 
+          v-for="course in filteredCourses" 
+          :key="course.courseCreatorId"
+          class="course" 
+        >
+          <Course :course="course" />
+        </div>    
+      </div>     
+       <div v-if="filteredCourses.length === 0 && !isLoading && !error">
+        <p class="message">No courses found</p>
+      </div> 
+      <div v-if="error">
+        <p class="message-error">{{ error }}</p>
+      </div>     
     </div>
-    <div v-else>
-      <p>No courses found</p>
-    </div>
+   
   </div>
 </template>
 
@@ -61,20 +70,30 @@ export default {
       activeFilters: {
         frontend: true,
         backend: true,
-        cloud: true,
-      }
+        cloud: true,        
+      },
+      isLoading: false,
+      error: null,
     }
   },
   methods: {
     setFilters(updatedFilters) {
       this.activeFilters = updatedFilters;
     },
-    loadCoatches() {
-      this.$store.dispatch('courses/loadCourses')
+    async loadCoatches() {     
+      this.isLoading = true;  
+
+      try {
+        await this.$store.dispatch('courses/loadCourses');
+      } catch (error) {
+        this.error = error.message || 'Something went wrong!';
+      }
+     
+      this.isLoading = false;  
     }
   },
-  created() {
-    this.loadCoatches();
+  created() { 
+    this.loadCoatches();    
   }
 };
 </script>
@@ -130,6 +149,19 @@ export default {
   height: 60px;
   width: 180px;
   background-color: green;
+}
+
+.message {
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.message-error {
+  margin-top: 10%;
+  color: red;
 }
 
 </style>

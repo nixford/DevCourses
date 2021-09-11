@@ -1,8 +1,11 @@
 <template>
   <h1>Requests</h1>
-  <div class="request-list-wrapper">    
+  <div v-if="isLoading">
+    <p class="message">Loading...</p>
+  </div>
+  <div v-if="requests.length > 0 && !isLoading" class="request-list-wrapper">    
     <div class="request"
-      v-for="request in getRequests"
+      v-for="request in requests"
       :key="request.requestId"
     >
       <p>Full name: {{ request.firstName }} {{ request.lastName }}</p>
@@ -11,6 +14,9 @@
       <p>Course name: {{ request.courseName }}</p>
     </div>
   </div>
+  <div v-if="requests.length === 0 && !isLoading">
+    <p class="message">No requests found</p>
+  </div>
 </template>
 
 <script>
@@ -18,13 +24,19 @@ export default {
   data() {
     return {
       requests: [],
+      isLoading: false,
     }
   },
-  computed: {
+  methods: {
     getRequests() {
-      return this.$store.getters['requests/requests'];
+      this.isLoading = true;
+      this.requests = this.$store.getters['requests/requests'];
+      this.isLoading = false;
     }
   },
+  created() {
+    this.getRequests();
+  }
 };
 </script>
 
@@ -50,5 +62,13 @@ export default {
 
   h1 {
     text-align: center;
+  }
+
+  .message {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 25px;
+    font-weight: 500;
   }
 </style>

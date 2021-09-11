@@ -1,26 +1,24 @@
 <template>
-    <p>Lecturer: {{ course.lecturerName }} / Lectures: {{ course.lectursCount }}</p>
-    <div class="areas-list">
-       <div class="area"
-          v-for="(area, i) in course.areas"
-          :key="i"
-        >
-          {{ area }}
-        </div>
-    </div>   
-    <p>{{ course.description }}</p>
-    <div class="buttons">
-      <router-link :to="`/courses/${course.courseCreatorId}`">
-        <button>View Details</button>
-      </router-link>
+  <p>
+    Lecturer: {{ course.lecturerName }} / Lectures: {{ course.lectursCount }}
+  </p>
+  <div class="areas-list">
+    <div class="area" v-for="(area, i) in course.areas" :key="i">
+      {{ area }}
     </div>
+  </div>
+  <p class="description">{{ course.description }}</p>
+  <div class="buttons">
+    <router-link :to="`/courses/${course.courseCreatorId}`">
+      <button>View Details</button>
+    </router-link>
+  </div>
 </template>
-
 
 <script scoped>
 export default {
-  props: ['course'],
-}
+  props: ['course']
+};
 </script>
 
 <style>
@@ -52,14 +50,22 @@ button {
   width: 150px;
   height: 35px;
   border-radius: 12px;
-  background-color: #FFB402;
+  background-color: #ffb402;
   color: white;
   font-size: 15px;
   font-weight: 600;
 }
 
 button:hover {
-  background-color:#50C7C7;
+  background-color: #50c7c7;
+}
+
+.description {
+  width: 80%;
+  margin: auto;
+  word-break: break-all;
+  font-weight: 400;
+  font-size: 15px;
+  margin-top: 10px;
 }
 </style>
-
